@@ -561,6 +561,11 @@ class MCSoftmaxDenseFABE(MCSoftmaxDenseFA):
   kernel_init: InitializeFn = nn.initializers.lecun_normal()
 
   def setup(self):
+    if self.latent_dim is None:
+      self.actual_latent_dim = self.num_outputs
+    else:
+      self.actual_latent_dim = self.latent_dim
+      
     if self.parameter_efficient:
       self._scale_layer_homoscedastic = dense.DenseBatchEnsemble(
           self.num_classes,
