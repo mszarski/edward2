@@ -562,7 +562,7 @@ class MCSoftmaxDenseFABE(MCSoftmaxDenseFA):
 
   def setup(self):
     if self.latent_dim is None:
-      self.actual_latent_dim = self.num_outputs
+      self.actual_latent_dim = self.num_classes
     else:
       self.actual_latent_dim = self.latent_dim
       
